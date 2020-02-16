@@ -95,7 +95,14 @@ function init(){
     document.querySelector('.player-1-panel').classList.remove('active');    
     document.querySelector('.player-0-panel').classList.add('active');  
     
-    winScore = parseInt(prompt('Input the winner\'s score!!')); 
+    var input = prompt('Input the winner\'s score!!'); 
+    // Undefined, 0, null or "" are coerced to false
+    // Anything else is coerced to true
+    if(winScore){
+        winScore = pareInt(input);
+    } else {
+        winScore = 100;
+    }
 }
 
 // Next Player
