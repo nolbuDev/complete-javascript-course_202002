@@ -186,6 +186,7 @@ var UIController = (function(){
                 value: parseFloat(document.querySelector(DOMstrings.inputValue).value)
             }
         },
+        
         addListItem: function(obj, type){
             var html, newHtml, element;
 
@@ -335,7 +336,7 @@ var controller = (function(budgetCtrl, UICtrl){
 
         if(input.description !== "" && !isNaN(input.value) && input.value > 0){
             // 2. Add the item to the budget controller
-            newItem = budgetController.addItem(input.type, input.description, input.value);
+            newItem = budgetCtrl.addItem(input.type, input.description, input.value);
 
             // 3. Add the item to the UI
             UICtrl.addListItem(newItem, input.type);
