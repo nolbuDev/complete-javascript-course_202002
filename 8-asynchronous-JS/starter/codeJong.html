@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Asynchronous JavaScript</title>
+</head>
+<body>
+    <h1>Code Jong</h1>
+    <script>
+        //ajax('http://a.com/api',(result) => { });
+
+        //function delay(sec, callback){
+        //    setTimeout(() => {
+        //        callback(new Date().toISOString());
+        //    }, sec * 1000);
+        //}
+
+        //console.log('start', new Date().toISOString());
+        //delay(1, (result) => {
+        //    console.log(result);
+        //})
+        //console.log('End');
+
+        function delayP(sec){
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(new Date().toISOString());
+                }, sec * 1000);
+            });
+        }
+
+        //delayP(3).then((aaa) => {
+        //    console.log(1,aaa);
+        //    return delayP(3);
+        //}).then((bbb) => {
+        //    console.log(2,bbb);
+        //    return delayP(3);
+        //}).then((ccc) => {
+        //    console.log(3,ccc);
+        //    return 'wow';
+        //}).then((data) => {
+        //    console.log(data);
+        //});
+
+        function myFunc(){
+            return 'func';
+        }
+
+        async function myAsync(){
+            await delayP(3).then((time) => {
+                console.log('myAsync', time);
+            })
+            return 'async';
+        }
+
+        console.log(myFunc());
+        //console.log(myAsync());
+        console.log(delayP(3));
+
+        myAsync().then((result) => {
+            console.log(result);
+        })
+
+    </script>
+</body>
+</html>
